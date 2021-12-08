@@ -27,6 +27,14 @@ instance_ocpus                      = 1
 instance_shape_config_memory_in_gbs = 6
 ```
 
+## Helper script `out-of-capacity.sh`
+
+Out of capacity is a common error when trying to create an instance in OCI provider using the Always Free tier, this little helper script will try to apply the terraform plan until it succeeds.
+
+### Suggestion
+
+Before trying the `out-of-capacity` helper right away, try gradually upgrading the `instance_ocpus` and `instance_shape_config_memory_in_gbs` starting from the minimum requirements, and run this script only after when you encounter the error "Out of Capacity".
+
 ## State Storage Backend
 
 After the successful creation of the desired instance, it would be better to persist the state by migrating to a remote backend such as S3, for this need you can also use Oracle's AWS S3 compatible Bucket Service's versioned Always Free Tier to store the state file, you can follow [the official guideline](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformUsingObjectStore.htm#s3) to create such a bucket. The template below is using access/secret key authentication rather than the credential file recommended by the documentation.
