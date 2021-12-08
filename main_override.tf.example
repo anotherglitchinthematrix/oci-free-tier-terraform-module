@@ -1,0 +1,14 @@
+terraform {
+  backend "s3" {
+    bucket                      = "<Bucket>"
+    key                         = "<Key/PathOnBucket>"
+    region                      = "<Region>"
+    endpoint                    = "https://<Namespace>.compat.objectstorage.<Region>.oraclecloud.com"
+    access_key                  = "<AccessKey>"
+    secret_key                  = "<SecretKey>"
+    skip_region_validation      = true
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    force_path_style            = true
+  }
+}
