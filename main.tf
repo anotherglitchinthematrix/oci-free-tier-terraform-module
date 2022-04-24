@@ -73,16 +73,16 @@ resource "oci_core_security_list" "atlas_security_list" {
   vcn_id         = oci_core_vcn.atlas_vcn.id
   display_name   = format("%sSecurityList", replace(title(var.instance_name), "/\\s/", ""))
 
-  # Allow outbound tcp traffic on all ports
+  # Allow outbound traffic on all ports for all protocols
   egress_security_rules {
     destination = "0.0.0.0/0"
-    protocol    = "6"
+    protocol    = "all"
     stateless   = false
   }
 
-  # Allow inbound tcp traffic on all ports
+  # Allow inbound traffic on all ports for all protocols
   ingress_security_rules {
-    protocol  = "6"
+    protocol  = "all"
     source    = "0.0.0.0/0"
     stateless = false
   }
