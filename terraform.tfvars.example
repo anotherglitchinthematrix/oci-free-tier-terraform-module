@@ -19,6 +19,7 @@ instance_state                      = "RUNNING"
 instance_shape                      = "VM.Standard.A1.Flex"
 instance_ocpus                      = 4
 instance_shape_config_memory_in_gbs = 24
+boot_volume_size_in_gbs							= 200
 
 # operating system parameters
 

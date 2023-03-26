@@ -6,6 +6,15 @@ provider "oci" {
   region           = var.region
 }
 
+terraform {
+  required_providers {
+    oci = {
+      source  = "oracle/oci"
+      version = ">= 4.108.0"
+    }
+  }
+}
+
 resource "oci_core_instance" "atlas_instance" {
   count               = var.num_instances
   availability_domain = data.oci_identity_availability_domain.ad.name
@@ -29,6 +38,7 @@ resource "oci_core_instance" "atlas_instance" {
   source_details {
     source_type = var.instance_source_type
     source_id   = var.instance_image_ocid[var.region]
+		boot_volume_size_in_gbs = var.boot_volume_size_in_gbs
   }
 
   metadata = {
