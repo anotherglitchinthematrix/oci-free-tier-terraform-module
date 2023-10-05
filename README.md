@@ -22,7 +22,7 @@ instance_ocpus                      = 2
 instance_shape_config_memory_in_gbs = 12
 
 # Four instances
-num_instances                       = 1
+num_instances                       = 4
 instance_ocpus                      = 1
 instance_shape_config_memory_in_gbs = 6
 ```
